@@ -1,0 +1,20 @@
+version: '2'
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    restart: unless-stopped
+    ports:
+      - 53:53/udp
+      - 53:53/tcp
+      - 67:67/udp
+      - 80:80/tcp
+      - 443:443/tcp
+    environment:
+      - TZ=America/New_York
+      - ServerIP=xxx.xxx.xxx.xxx
+    hostname: xxxx.xxxx.xxxxx.xxx
+    volumes:
+      - /media/docker/pihole/configs:/etc/pihole
+      - /media/docker/pihole/dnsmasq.d:/etc/dnsmasq.d
+    # docker logs pihole 2> /dev/null | grep 'password:'
