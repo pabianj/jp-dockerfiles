@@ -1,0 +1,18 @@
+# docker run -d --name bind9 -p 53:53 -p 53:53/udp \ 
+# 	-v /absolute/path/named:/etc/bind/ \ 
+#        jpabian/bind:1.0
+# 
+# I have the volumes mounted via NFS locally.  
+#
+#	sudo docker build . -t jpabian/bind:1.0
+
+version: "3"
+
+services:
+        bind:
+          build: ./
+          ports:
+            - "53:53"
+          volumes:
+            - /media/docker/named:/etc/bind/
+
