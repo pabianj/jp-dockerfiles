@@ -13,6 +13,7 @@ version: "3"
 services:
   gitlab:
     image: gitlab/gitlab-ce:latest
+    restart: unless-stopped
     ports:
       - "443:443"
       - "80:80"
